@@ -131,7 +131,8 @@ void* receivePackets(void *vargp) {
     for (int i = 0; i < no_of_packets; i++) {
     RECEIVE:
         // Call the new function to receive with a timeout
-        int result = receive_with_timeout(socket_fd, &temp_packet, &cli_addr, &cli_addr_len);
+        int result;
+		result = receive_with_timeout(socket_fd, &temp_packet, &cli_addr, &cli_addr_len);
         
         if (result == 0) {
             // Timeout occurred, re-send the request or handle timeout
